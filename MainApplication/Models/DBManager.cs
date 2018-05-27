@@ -98,6 +98,11 @@ namespace MainApplication.Models
                             command.ExecuteNonQuery();
                         }
                     }
+
+                    command.CommandText = "update 収集情報 ";
+                    command.CommandText += "set 最後に収集したID=" + r.Id + " ";
+                    command.CommandText += "where id=1";
+                    command.ExecuteNonQuery();
                 }
                 conn.Close();
             }
@@ -144,6 +149,16 @@ namespace MainApplication.Models
                     command.CommandText += ",";
                     command.CommandText += "回数 integer default 0";
                     command.CommandText += ")";
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = "create table 収集情報 (";
+                    command.CommandText += "id integer not null primary key autoincrement";
+                    command.CommandText += ",";
+                    command.CommandText += "最後に収集したID integer default 0";
+                    command.CommandText += ")";
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = "insert into 収集情報 (最後に収集したID) values (0)";
                     command.ExecuteNonQuery();
                 }
                 conn.Close();

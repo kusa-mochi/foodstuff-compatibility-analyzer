@@ -16,24 +16,29 @@ namespace MainApplication.Models
          */
 
         private bool _collecting = false;
+        private string[][] _duplicationList = new string[][]
+        {
+            new string[]{"にんじん","ニンジン","人参"},
+            new string[]{"しょうゆ","醤油","しょう油"},
+            new string[]{"しお","塩"}
+        };
 
         void CollectRecord(int id, IProgress<RecipeRecord> progress, CancellationToken cancelToken)
         {
             _collecting = true;
+
+            //docがHtmlのコードを文書として保持します
+            var doc = new HtmlDocument();
+
+            //webを通してHtmlのコードを取得します
+            var web = new System.Net.WebClient();
+
+            //HtmlをUTF-8で取得します。
+            //特に指定しない場合、Htmlの文字コードによっては文字化けする場合があります
+            web.Encoding = Encoding.UTF8;
+
             while (_collecting)
             {
-                Thread.Sleep(100);
-
-                //docがHtmlのコードを文書として保持します
-                var doc = new HtmlDocument();
-
-                //webを通してHtmlのコードを取得します
-                var web = new System.Net.WebClient();
-
-                //HtmlをUTF-8で取得します。
-                //特に指定しない場合、Htmlの文字コードによっては文字化けする場合があります
-                web.Encoding = Encoding.UTF8;
-
                 //web.DownloadString(URL)のURL先のHtmlを取得します。
                 try
                 {
@@ -48,6 +53,7 @@ namespace MainApplication.Models
                         ""));
                     Cancellation(cancelToken);
                     id++;
+                    Thread.Sleep(200);
                     continue;
                 }
 
@@ -67,6 +73,7 @@ namespace MainApplication.Models
                         ""));
                     Cancellation(cancelToken);
                     id++;
+                    Thread.Sleep(100);
                     continue;
                 }
 
@@ -86,6 +93,7 @@ namespace MainApplication.Models
                         null,
                         ""));
                     Cancellation(cancelToken);
+                    Thread.Sleep(100);
                     continue;
                 }
 
@@ -96,6 +104,8 @@ namespace MainApplication.Models
                     @"https://cookpad.com/recipe/" + id.ToString()));
 
                 Cancellation(cancelToken);
+
+                Thread.Sleep(2000);
             }
         }
 
@@ -125,7 +135,7 @@ namespace MainApplication.Models
             string[] output = new string[c.Count];
             for (int iStuff = 0; iStuff < c.Count; iStuff++)
             {
-                output[iStuff] = c[iStuff].InnerText;
+                output[iStuff] = c[iStuff].InnerText.Replace("\r", "").Replace("\n", "");
             }
 
             return output;

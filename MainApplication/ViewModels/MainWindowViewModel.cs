@@ -71,7 +71,7 @@ namespace MainApplication.ViewModels
             get
             { return _StartId; }
             set
-            { 
+            {
                 if (_StartId == value)
                     return;
                 _StartId = value;
@@ -89,7 +89,7 @@ namespace MainApplication.ViewModels
             get
             { return _CurrentId; }
             set
-            { 
+            {
                 if (_CurrentId == value)
                     return;
                 _CurrentId = value;
@@ -107,7 +107,7 @@ namespace MainApplication.ViewModels
             get
             { return _CollectionSpeed; }
             set
-            { 
+            {
                 if (_CollectionSpeed == value)
                     return;
                 _CollectionSpeed = value;
@@ -125,7 +125,7 @@ namespace MainApplication.ViewModels
             get
             { return _IsCollecting; }
             set
-            { 
+            {
                 if (_IsCollecting == value)
                     return;
                 _IsCollecting = value;
@@ -144,7 +144,7 @@ namespace MainApplication.ViewModels
             get
             { return _IsNotCollecting; }
             set
-            { 
+            {
                 if (_IsNotCollecting == value)
                     return;
                 _IsNotCollecting = value;
@@ -156,14 +156,14 @@ namespace MainApplication.ViewModels
 
 
         #region ResultData変更通知プロパティ
-        private ObservableCollection<RecipeRecord> _ResultData = new ObservableCollection<RecipeRecord>();
+        private string _ResultData = "";
 
-        public ObservableCollection<RecipeRecord> ResultData
+        public string ResultData
         {
             get
             { return _ResultData; }
             set
-            { 
+            {
                 if (_ResultData == value)
                     return;
                 _ResultData = value;
@@ -192,12 +192,13 @@ namespace MainApplication.ViewModels
         public async void Start()
         {
             IsCollecting = true;
+            CurrentId = StartId;
 
             cancelSrc = new CancellationTokenSource();
             var progress = new Progress<RecipeRecord>((r) =>
             {
                 // データが取得できなかった場合
-                if(r.Id == 0)
+                if (r.Id == 0)
                 {
                     // 画面上のIDだけ更新する。
                     CurrentId++;
@@ -205,7 +206,7 @@ namespace MainApplication.ViewModels
                 }
 
                 // データは取得できたが読み込めない形式だった場合
-                if(r.Id < 0)
+                if (r.Id < 0)
                 {
                     // データベースにエラー履歴を残す。
                     _db.AddErrorRecord(-r.Id);
@@ -216,7 +217,7 @@ namespace MainApplication.ViewModels
                 }
 
                 // DataGridにレコードを追加する処理。
-                ResultData.Add(r);
+                ResultData += r.Id.ToString() + "\n";
 
                 // DBにレコードを追加する処理。
                 _db.AddRecord(r);
@@ -228,7 +229,7 @@ namespace MainApplication.ViewModels
             {
                 await _collector.CollectRecordAsync(StartId, progress, cancelSrc.Token);
             }
-            catch(OperationCanceledException)
+            catch (OperationCanceledException)
             {
                 IsCollecting = false;
                 return;
@@ -286,7 +287,7 @@ namespace MainApplication.ViewModels
 
         public void MakeDB()
         {
-
+            // TODO
         }
         #endregion
 
