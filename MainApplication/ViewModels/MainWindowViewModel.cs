@@ -53,8 +53,6 @@ namespace MainApplication.ViewModels
          * 自動的にUIDispatcher上での通知に変換されます。変更通知に際してUIDispatcherを操作する必要はありません。
          */
 
-        // 収集がキャンセルされた場合に立つフラグ
-        private bool _canceled = false;
         private DataCollector _collector = null;
         private DBManager _db = null;
 
