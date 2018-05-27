@@ -15,10 +15,15 @@ namespace MainApplication.Models
          * NotificationObjectはプロパティ変更通知の仕組みを実装したオブジェクトです。
          */
 
+        private bool _collecting = false;
+
         void CollectRecord(int id, IProgress<RecipeRecord> progress, CancellationToken cancelToken)
         {
-            while (true)
+            _collecting = true;
+            while (_collecting)
             {
+                Thread.Sleep(100);
+
                 //docがHtmlのコードを文書として保持します
                 var doc = new HtmlDocument();
 
@@ -111,7 +116,7 @@ namespace MainApplication.Models
             }
             catch (OperationCanceledException)
             {
-                throw new OperationCanceledException(cancelToken);
+                _collecting = false;
             }
         }
 
