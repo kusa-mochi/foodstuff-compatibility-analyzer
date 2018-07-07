@@ -57,18 +57,5 @@
             <Button x:Name="button" Content="DB新規作成"/>
         </StackPanel>
         <TextBox Text="{Binding ResultData}" Grid.Column="2"/>
-        <!--<DataGrid x:Name="dataGrid_Result" Grid.Column="2" ItemsSource="{Binding ResultData}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding id}" ClipboardContentBinding="{x:Null}" Header="ID"/>
-                <DataGridTextColumn Binding="{Binding dateTime, StringFormat=yyyy/MM/dd HH:mm:ss}" ClipboardContentBinding="{x:Null}" Header="発生日時"/>
-                <DataGridTextColumn Binding="{Binding epicenterName}" ClipboardContentBinding="{x:Null}" Header="震央地名"/>
-                <DataGridTextColumn Binding="{Binding latitude}" ClipboardContentBinding="{x:Null}" Header="緯度"/>
-                <DataGridTextColumn Binding="{Binding longitude}" ClipboardContentBinding="{x:Null}" Header="経度"/>
-                <DataGridTextColumn Binding="{Binding depth}" ClipboardContentBinding="{x:Null}" Header="深さ[km]"/>
-                <DataGridTextColumn Binding="{Binding magnitude}" ClipboardContentBinding="{x:Null}" Header="マグニチュード"/>
-                <DataGridTextColumn Binding="{Binding maxSeismicLevel}" ClipboardContentBinding="{x:Null}" Header="最大震度"/>
-                <DataGridHyperlinkColumn Binding="{Binding url}" ContentBinding="{Binding url}" ClipboardContentBinding="{x:Null}" Header="参照URL"/>
-            </DataGrid.Columns>
-        </DataGrid>-->
     </Grid>
 </Window>
