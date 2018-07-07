@@ -12,8 +12,8 @@ namespace AnalyzeDB
     // TODO: 特定の食材を中心にした図を作図するモードを追加する。
     class Program
     {
-        private static string _jouken = "where 回数 > 8";
-        private static int _numResult = 40;
+        private static string _jouken = "where 食材ID1=106 or 食材ID2=106";
+        private static int _numResult = 300;
 
         private static string _dbFilePath = "data.db";
         private static List<List<string>> _duplicationFoodStuffList = null;
@@ -135,7 +135,7 @@ namespace AnalyzeDB
                     }
                     resultCountReader.Close();
 
-                    //// 出現回数を絞って食材の組合せデータを取得する。
+                    //// 条件を絞って食材の組合せデータを取得する。
                     command.CommandText = "select * from 食材相性集計表" + (string.IsNullOrEmpty(_jouken) ? "" : " " + _jouken);
                     var resultReader = command.ExecuteReader();
 
