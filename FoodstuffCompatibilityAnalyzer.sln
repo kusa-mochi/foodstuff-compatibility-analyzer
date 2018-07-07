@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainApplication", "MainAppl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyzeDB", "AnalyzeDB\AnalyzeDB.csproj", "{22EAA11F-0683-4D9E-8EDB-BBBB97E11250}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebScrapingKit", "WebScrapingKit\WebScrapingKit.csproj", "{1381844E-BEF4-4C68-9755-7D4B250DDD1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,18 @@ Global
 		{22EAA11F-0683-4D9E-8EDB-BBBB97E11250}.Release|x64.Build.0 = Release|Any CPU
 		{22EAA11F-0683-4D9E-8EDB-BBBB97E11250}.Release|x86.ActiveCfg = Release|Any CPU
 		{22EAA11F-0683-4D9E-8EDB-BBBB97E11250}.Release|x86.Build.0 = Release|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Debug|x64.Build.0 = Debug|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Debug|x86.Build.0 = Debug|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Release|x64.ActiveCfg = Release|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Release|x64.Build.0 = Release|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Release|x86.ActiveCfg = Release|Any CPU
+		{1381844E-BEF4-4C68-9755-7D4B250DDD1C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
